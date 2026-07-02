@@ -9,7 +9,7 @@
 <body>
 
   <header class="app-header">
-    <h1 class="app-title">Movement Guard</h1>
+    <h1 class="app-title">Prueba de Sensor de movimiento</h1>
     <div id="speed-badge" class="speed-badge speed-badge--good">
       <span class="speed-badge-icon" aria-hidden="true">●</span>
       <span class="speed-badge-label">Velocidad normal</span>
@@ -52,21 +52,6 @@
       <p id="gps-error" class="control-error" role="alert"></p>
     </section>
 
-    <!-- ================= PANEL DE SIMULACIÓN =================
-         Solo para demostración/pruebas: alimenta el mismo motor
-         real (MovementGuard) con una velocidad simulada, para ver
-         el bloqueo funcionando sin necesidad de moverte. -->
-    <section class="sim-panel">
-      <h2>Panel de simulación <span class="sim-tag">solo para demostración</span></h2>
-      <label for="sim-speed">Velocidad simulada: <span id="sim-speed-value">0</span> km/h</label>
-      <input id="sim-speed" type="range" min="0" max="30" step="1" value="0">
-      <div class="sim-quick-buttons">
-        <button class="btn" type="button" data-sim-speed="0">0 km/h</button>
-        <button class="btn" type="button" data-sim-speed="5">5 km/h</button>
-        <button class="btn" type="button" data-sim-speed="15">15 km/h</button>
-        <button class="btn" type="button" data-sim-speed="25">25 km/h</button>
-      </div>
-    </section>
 
   </main>
 
