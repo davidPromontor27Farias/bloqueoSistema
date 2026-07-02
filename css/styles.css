@@ -1,0 +1,223 @@
+:root {
+  --color-good: #0ca30c;
+  --color-critical: #d03b3b;
+  --surface: #fcfcfb;
+  --page: #f9f9f7;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --border: rgba(11, 11, 11, 0.1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--text-primary);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-title { font-size: 18px; margin: 0; }
+
+.app-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Contenido de muestra */
+.demo-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.demo-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: 0 0 12px;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.demo-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.demo-card h2 { font-size: 13px; margin: 0 0 4px; color: var(--text-secondary); }
+.demo-card p { margin: 0; font-size: 16px; font-weight: 600; }
+
+.demo-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--text-primary);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Paneles de control */
+.control-panel, .sim-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.control-panel h2, .sim-panel h2 {
+  font-size: 15px;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-panel p, .sim-panel label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.sim-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: #eda100;
+  background: rgba(237, 161, 0, 0.12);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.control-buttons, .sim-quick-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: var(--text-primary);
+  color: white;
+  border-color: var(--text-primary);
+}
+
+.control-error {
+  color: var(--color-critical);
+  font-size: 13px;
+  margin-top: 8px;
+  min-height: 16px;
+}
+
+.sim-panel input[type="range"] {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Badge de velocidad */
+.speed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--page);
+  border: 1px solid var(--border);
+}
+
+.speed-badge-icon { font-size: 10px; }
+
+.speed-badge--good .speed-badge-icon,
+.speed-badge--good .speed-badge-value { color: var(--color-good); }
+
+.speed-badge--critical .speed-badge-icon,
+.speed-badge--critical .speed-badge-value { color: var(--color-critical); }
+
+.speed-badge-label { color: var(--text-secondary); }
+
+/* Overlay de bloqueo */
+.speed-lock-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.speed-lock-overlay.is-visible { display: flex; }
+
+.speed-lock-card {
+  max-width: 420px;
+  width: 90%;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  border-top: 6px solid var(--color-critical);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.speed-lock-icon {
+  font-size: 48px;
+  color: var(--color-critical);
+  margin-bottom: 12px;
+}
+
+.speed-lock-card h1 {
+  font-size: 22px;
+  color: var(--color-critical);
+  margin: 0 0 12px;
+}
+
+.speed-lock-card p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.speed-lock-current {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 16px 0;
+}
+
+.speed-lock-hint {
+  font-size: 13px;
+  color: var(--text-secondary);
+}

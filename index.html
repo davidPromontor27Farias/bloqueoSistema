@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movement Guard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1 class="app-title">Movement Guard</h1>
+    <div id="speed-badge" class="speed-badge speed-badge--good">
+      <span class="speed-badge-icon" aria-hidden="true">●</span>
+      <span class="speed-badge-label">Velocidad normal</span>
+      <span class="speed-badge-value" id="speed-badge-value">0 km/h</span>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <!-- ================= CONTENIDO DE MUESTRA =================
+         Esto representa tu app real. Puede ser cualquier cosa:
+         un dashboard, un formulario, un mapa, etc. Lo único que
+         importa es que quede protegido por el overlay de bloqueo. -->
+    <section class="demo-content">
+      <p class="demo-label">Contenido de muestra (aquí iría tu app real)</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h2>Ruta actual</h2>
+          <p>Av. Reforma → Periférico Sur</p>
+        </div>
+        <div class="demo-card">
+          <h2>Combustible</h2>
+          <p>68%</p>
+        </div>
+        <div class="demo-card">
+          <h2>Próxima parada</h2>
+          <p>12 min</p>
+        </div>
+      </div>
+      <button class="demo-button" type="button">Acción de ejemplo</button>
+    </section>
+
+    <!-- ================= CONTROL REAL DE GPS ================= -->
+    <section class="control-panel">
+      <h2>Monitoreo GPS real</h2>
+      <p>Requiere permiso de ubicación y contexto seguro (HTTPS o localhost).</p>
+      <div class="control-buttons">
+        <button id="start-gps" class="btn btn--primary" type="button">Iniciar monitoreo GPS</button>
+        <button id="stop-gps" class="btn" type="button">Detener</button>
+      </div>
+      <p id="gps-error" class="control-error" role="alert"></p>
+    </section>
+
+    <!-- ================= PANEL DE SIMULACIÓN =================
+         Solo para demostración/pruebas: alimenta el mismo motor
+         real (MovementGuard) con una velocidad simulada, para ver
+         el bloqueo funcionando sin necesidad de moverte. -->
+    <section class="sim-panel">
+      <h2>Panel de simulación <span class="sim-tag">solo para demostración</span></h2>
+      <label for="sim-speed">Velocidad simulada: <span id="sim-speed-value">0</span> km/h</label>
+      <input id="sim-speed" type="range" min="0" max="30" step="1" value="0">
+      <div class="sim-quick-buttons">
+        <button class="btn" type="button" data-sim-speed="0">0 km/h</button>
+        <button class="btn" type="button" data-sim-speed="5">5 km/h</button>
+        <button class="btn" type="button" data-sim-speed="15">15 km/h</button>
+        <button class="btn" type="button" data-sim-speed="25">25 km/h</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= OVERLAY DE BLOQUEO ================= -->
+  <div id="speed-lock-overlay" class="speed-lock-overlay" role="alertdialog" aria-modal="true" aria-labelledby="lock-title" aria-describedby="lock-desc">
+    <div class="speed-lock-card">
+      <div class="speed-lock-icon" aria-hidden="true">⚠</div>
+      <h1 id="lock-title">Exceso de velocidad</h1>
+      <p id="lock-desc">
+        Se detectó que el vehículo va a más de <strong>10 km/h</strong>.
+        Por seguridad, el sistema se ha bloqueado.
+      </p>
+      <div class="speed-lock-current">
+        Velocidad actual: <span id="lock-speed-value">-- km/h</span>
+      </div>
+      <p class="speed-lock-hint">
+        El sistema se desbloqueará automáticamente al reducir la velocidad.
+      </p>
+    </div>
+  </div>
+
+  <script src="js/movement-guard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
