@@ -1,4 +1,4 @@
-const guard = new MovementGuard({ speedLimitKmh: 1 });
+const guard = new MovementGuard({ speedLimitKmh: 2 });
 guard.start();
 
 const overlay = document.getElementById('speed-lock-overlay');
