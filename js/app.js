@@ -1,4 +1,5 @@
 const guard = new MovementGuard({ speedLimitKmh: 1 });
+guard.start();
 
 const overlay = document.getElementById('speed-lock-overlay');
 const lockSpeedValue = document.getElementById('lock-speed-value');
@@ -33,15 +34,7 @@ guard.addEventListener('error', (e) => {
   gpsError.textContent = `Error de GPS (${e.detail.code}): ${e.detail.message || ''}`;
 });
 
-// -- Control GPS real --
-document.getElementById('start-gps').addEventListener('click', () => {
-  gpsError.textContent = '';
-  guard.start();
-});
 
-document.getElementById('stop-gps').addEventListener('click', () => {
-  guard.stop();
-});
 
 // -- Panel de simulación (solo demostración) --
 const simSlider = document.getElementById('sim-speed');
